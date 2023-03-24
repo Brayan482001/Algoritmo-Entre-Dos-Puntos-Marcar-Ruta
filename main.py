@@ -9,12 +9,16 @@ if __name__ == '__main__':
 
     df = pd.read_excel('metro.xlsx')
     df.head()
+
     try:
         METRO = nx.from_pandas_edgelist(
             df, source="Origen", target="Destino", edge_attr='Longitud de interestación')
         djk_path = nx.dijkstra_path(
             METRO, source=fromPlace, target=toPlace, weight='Longitud de interestación')
+    except:
+        print('No existe alguna de las estaciones ingresadas')
 
+    try:
         metros = nx.dijkstra_path_length(
             METRO, fromPlace, toPlace, 'Longitud de interestación')
     except:
