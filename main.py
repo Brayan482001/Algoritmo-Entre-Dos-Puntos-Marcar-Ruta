@@ -14,13 +14,12 @@ if __name__ == '__main__':
             df, source="Origen", target="Destino", edge_attr='Longitud de interestación')
         djk_path = nx.dijkstra_path(
             METRO, source=fromPlace, target=toPlace, weight='Longitud de interestación')
-        
+
         metros = nx.dijkstra_path_length(
             METRO, fromPlace, toPlace, 'Longitud de interestación')
     except:
         print('No existe una ruta entre las estaciones ingresadas')
     else:
-        # Si todo sale bien hacer...
         print("Cantidad de estaciones por las que debe pasar: ", len(djk_path))
         print('-------------------------------------------')
         print("Ruta: ")
